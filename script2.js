@@ -1,5 +1,5 @@
 let obj = {
-    let convert = function() {
+    convert : function() {
         let send_request = require('./script1.js');
         // 獲取輸入框中的數字
         var input = document.getElementById("input").value;

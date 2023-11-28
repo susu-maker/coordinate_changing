@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>簡單網頁範例</title>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script> 
@@ -132,12 +133,14 @@
 </body>
 </html>
 <script>
+// const corsURL = 'https://cors-anywhere.herokuapp.com/'; // use cors-anywhere to fetch api data
 function triggerPostAction() {
     $("button").click(function() {
         console.log(1);
             var input = document.getElementById("input").value;
             $.ajax({
             type: 'POST',
+            // url: corsURL+'http://gis.thl.ncku.edu.tw/coordtrans/coordtrans.aspx',
             url: 'http://gis.thl.ncku.edu.tw/coordtrans/coordtrans.aspx',
             headers:{
                 'Access-Control-Allow-Origin': '*',
@@ -159,10 +162,11 @@ function triggerPostAction() {
                     __VIEWSTATE:'/wEPDwUKMTA0MDk3Njk0Mg9kFgICAQ9kFgICBw8PFgIeBFRleHQFkQNUV0Q2N+e2k+e3r+W6puWdkOaomeWAvCA644CA44CA44CAIOOAgDxiPjEyMDowODoyMS4xMTQwMCwgMjM6MDM6MTAuMTE1MDA8c21hbGw+ICgxMjAuMTM5MTk4MzMzMzMzLDIzLjA1MjgwOTcyMjIyMjIpPC9zbWFsbD48L2I+PGJyPlRXRDY35LqM5bqm5YiG5bi25Z2Q5qiZ5YC8IDrjgIDjgIAg44CAPGI+MTYxNzg4Ljk4NSwgMjU1MDM5OS4yMjA8L2I+PGJyPlRXRDk3KFdHUzg0Kee2k+e3r+W6puWdkOaomeWAvCA6 IDxiPjEyMDowODo1MC4xOTIyMCwgMjM6MDM6MDMuNzk2MjQ8c21hbGw+ICgxMjAuMTQ3Mjc1NjExMzcyLDIzLjA1MTA1NDUxMDI2NjMpPC9zbWFsbD48L2I+PGJyPlRXRDk35LqM5bqm5YiG5bi25Z2Q5qiZ5YC8 IDrjgIAg44CA44CAPGI+MTYyNjE1LjkzNCwgMjU1MDE5MS4xODI8L2I+PGJyPmRkZG/sibbFSPm1K+nXL2AG/J+PInJM',
                     __VIEWSTATEGENERATOR:'F862B26F'},
             success: function(msg) {
-                console.log(xhr.getResponseHeader('Ver'));
-                console.log(xhr.getResponseHeader('Status'));
-                output = $('span[id=Message]').children("b").eq(3).text();
-                document.getElementById("output").value = output;
+                console.log('good');
+                // console.log(xhr.getResponseHeader('Ver'));
+                // console.log(xhr.getResponseHeader('Status'));
+                // output = $('span[id=Message]').children("b").eq(3).text();
+                // document.getElementById("output").value = output;
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 // 处理错误
