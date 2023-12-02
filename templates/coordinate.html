@@ -21,7 +21,7 @@
     <p>請在下面的輸入框中輸入一串數字，然後按下確認按鈕，看看轉換後的結果。</p>
     <input id="input" type="text" placeholder="162111,2550191">
     <button onclick=triggerPostAction()>確認</button>
-    <input id="output" type="text" placeholder="轉換結果" readonly>
+    <input id="output" style="width:700px" type="text" placeholder="轉換結果" readonly>
     <!-- <script>
         // 定義一個函數，將數字轉換成二進位制
         // function convert() {
@@ -141,32 +141,45 @@ function triggerPostAction() {
             $.ajax({
             type: 'POST',
             // url: corsURL+'http://gis.thl.ncku.edu.tw/coordtrans/coordtrans.aspx',
-            url: 'http://gis.thl.ncku.edu.tw/coordtrans/coordtrans.aspx',
+            // url: 'http://gis.thl.ncku.edu.tw/coordtrans/coordtrans.aspx',
+            url: '/change_coordinate',
             headers:{
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'POST,GET,OPTIONS,PUT,DELETE',
-                'Access-Control-Allow-Headers': '*',
-                'Access-Control-Allow-Credentials': 'true',
-                'Access-Control-Expose-Headers': '*',
+                // 'Access-Control-Allow-Origin': '*',
+                // 'Access-Control-Allow-Methods': 'POST,GET,OPTIONS,PUT,DELETE',
+                // 'Access-Control-Allow-Headers': '*',
+                // 'Access-Control-Allow-Credentials': 'true',
+                // 'Access-Control-Expose-Headers': '*',
                 'Ver': '1.0',
+                'fileType' : 'mp4',
+                'md5'  : '47e954ec481d097e96261d993ec43ba5',
+                'fileSize' : 276505673,
                 'Status':'OK',
                 "Upgrade-Insecure-Requests": "1",
                 "Content-Type": "application/x-www-form-urlencoded",
                 // "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7"
             },
+            crossDomain: true,
+            dataType: 'json',
             data: { BUTTON1:'轉換',
                     CoordFormat:'4',
-                    CoordValue:input.toString(),
+                    // CoordValue:input.toString(),
+                    CoordValue:"162111,2550191",
                     __EVENTVALIDATION:'/wEWBwLlxrnMAwKyy4GNBwKzy4GNBwKwy4GNBwKxy4GNBwL5muahDAKMm5KEDaYjgdhgAGJ5Ne1L7rPtx+ycuzC/',
                     __VIEWSTATE:'/wEPDwUKMTA0MDk3Njk0Mg9kFgICAQ9kFgICBw8PFgIeBFRleHQFkQNUV0Q2N+e2k+e3r+W6puWdkOaomeWAvCA644CA44CA44CAIOOAgDxiPjEyMDowODoyMS4xMTQwMCwgMjM6MDM6MTAuMTE1MDA8c21hbGw+ICgxMjAuMTM5MTk4MzMzMzMzLDIzLjA1MjgwOTcyMjIyMjIpPC9zbWFsbD48L2I+PGJyPlRXRDY35LqM5bqm5YiG5bi25Z2Q5qiZ5YC8IDrjgIDjgIAg44CAPGI+MTYxNzg4Ljk4NSwgMjU1MDM5OS4yMjA8L2I+PGJyPlRXRDk3KFdHUzg0Kee2k+e3r+W6puWdkOaomeWAvCA6 IDxiPjEyMDowODo1MC4xOTIyMCwgMjM6MDM6MDMuNzk2MjQ8c21hbGw+ICgxMjAuMTQ3Mjc1NjExMzcyLDIzLjA1MTA1NDUxMDI2NjMpPC9zbWFsbD48L2I+PGJyPlRXRDk35LqM5bqm5YiG5bi25Z2Q5qiZ5YC8 IDrjgIAg44CA44CAPGI+MTYyNjE1LjkzNCwgMjU1MDE5MS4xODI8L2I+PGJyPmRkZG/sibbFSPm1K+nXL2AG/J+PInJM',
                     __VIEWSTATEGENERATOR:'F862B26F'},
-            success: function(msg) {
-                console.log('good');
+            result:{},
+            success: function(result) {
+                console.log("good")
                 // console.log(xhr.getResponseHeader('Ver'));
                 // console.log(xhr.getResponseHeader('Status'));
+                // console.log(xhr.getResponseHeader('StatusNum'));
+                // console.log(xhr.getResponseHeader('Msg'));
                 // output = $('span[id=Message]').children("b").eq(3).text();
-                // document.getElementById("output").value = output;
+                output = result["coor"];
+                console.log(output);
+                document.getElementById("output").value = output.toString();
+                // document.getElementById("output").value = "output";
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 // 处理错误
