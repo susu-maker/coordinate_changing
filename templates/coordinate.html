@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang = "zh-zw">
 <head>
-    <title>簡單網頁範例</title>
+    <title>座標轉換系統</title>
+    <!-- <link rel="stylesheet" href="../css/coordinate.css"/> -->
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/coordinate.css') }}">
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script> 
 </head>
 <body>
@@ -17,11 +19,24 @@
       </script> -->
     <!-- <script>var exports = {};</script>  -->
     <!-- <script src="script2.js"></script> -->
-    <h1>簡單網頁範例</h1>
-    <p>請在下面的輸入框中輸入一串數字，然後按下確認按鈕，看看轉換後的結果。</p>
-    <input id="input" type="text" placeholder="162111,2550191">
-    <button onclick=triggerPostAction()>確認</button>
-    <input id="output" style="width:700px" type="text" placeholder="轉換結果" readonly>
+    <!-- <div class = "outside">
+        <div class = "inside">
+            座標轉換系統
+        </div>
+    </div> -->
+    <div id = "title">
+            座標轉換系統
+    </div>
+    <div class = "description"><p>wgs84<->twd97</p></div>
+    <div class = "description"><p>此網頁可將座標從wgs84與twd97相互轉換</p></div>
+    <div class = "description"><p>經度或緯度至於前或後均可</p></div>
+    <div class = "description"><p>可以<空白><;><,>分隔經緯度</p></div>
+    <div class = "outside">
+        <input id="input" type="text" placeholder="輸入座標">
+        <button onclick=triggerPostAction()>確認</button>
+        <input id="output" style="width:500px" type="text" placeholder="轉換結果" readonly>
+    </div>
+
     <!-- <script>
         // 定義一個函數，將數字轉換成二進位制
         // function convert() {
@@ -163,8 +178,8 @@ function triggerPostAction() {
             dataType: 'json',
             data: { BUTTON1:'轉換',
                     CoordFormat:'4',
-                    // CoordValue:input.toString(),
-                    CoordValue:"162111,2550191",
+                    CoordValue:input.toString(),
+                    // CoordValue:"162111,2550191",
                     __EVENTVALIDATION:'/wEWBwLlxrnMAwKyy4GNBwKzy4GNBwKwy4GNBwKxy4GNBwL5muahDAKMm5KEDaYjgdhgAGJ5Ne1L7rPtx+ycuzC/',
                     __VIEWSTATE:'/wEPDwUKMTA0MDk3Njk0Mg9kFgICAQ9kFgICBw8PFgIeBFRleHQFkQNUV0Q2N+e2k+e3r+W6puWdkOaomeWAvCA644CA44CA44CAIOOAgDxiPjEyMDowODoyMS4xMTQwMCwgMjM6MDM6MTAuMTE1MDA8c21hbGw+ICgxMjAuMTM5MTk4MzMzMzMzLDIzLjA1MjgwOTcyMjIyMjIpPC9zbWFsbD48L2I+PGJyPlRXRDY35LqM5bqm5YiG5bi25Z2Q5qiZ5YC8IDrjgIDjgIAg44CAPGI+MTYxNzg4Ljk4NSwgMjU1MDM5OS4yMjA8L2I+PGJyPlRXRDk3KFdHUzg0Kee2k+e3r+W6puWdkOaomeWAvCA6 IDxiPjEyMDowODo1MC4xOTIyMCwgMjM6MDM6MDMuNzk2MjQ8c21hbGw+ICgxMjAuMTQ3Mjc1NjExMzcyLDIzLjA1MTA1NDUxMDI2NjMpPC9zbWFsbD48L2I+PGJyPlRXRDk35LqM5bqm5YiG5bi25Z2Q5qiZ5YC8 IDrjgIAg44CA44CAPGI+MTYyNjE1LjkzNCwgMjU1MDE5MS4xODI8L2I+PGJyPmRkZG/sibbFSPm1K+nXL2AG/J+PInJM',
                     __VIEWSTATEGENERATOR:'F862B26F'},

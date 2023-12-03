@@ -1,0 +1,51 @@
+
+#title{
+  /* position: absolute;*/
+  /* transform: translate(50%, 50%); 
+  top: 50%;  
+  left: 50%;
+  right: 50%; */
+  /* padding-left: 10px;*/
+  /*文字*/
+  font-family:"DFKai-sb";
+  font-size:20px;
+  /**/
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  position:static;
+  width: 300px;
+  border: 7.5px solid black;
+  padding: 1.5px;
+  /* margin: 10px; */
+  margin:auto;/*box置中*/
+  text-align:center;
+  color: red;
+}
+.description{
+  /*文字*/
+  font-family:"DFKai-sb";
+  font-size:18px;
+  /**/
+  margin:auto;/*box置中*/
+  text-align:center;
+  color: black;
+}
+.outside{
+  width: auto;
+  height: 50;
+  background-color: #ffffff;
+  margin:auto;/*box置中*/
+  /*內容物位置*/
+  justify-content: center;
+  text-align:center;
+  align-content: center;
+  display: flex;
+}
+.inside{
+  background-color: pink;
+  height: 200px;
+  width: 200px;
+  margin: auto;
+}

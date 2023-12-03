@@ -7,6 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def get_twd97(lng, lat):
+    print("to_twd97")
     url = "http://gis.thl.ncku.edu.tw/coordtrans/coordtrans.aspx"
     headers = {
         "Upgrade-Insecure-Requests":"1",
@@ -30,6 +31,7 @@ def get_twd97(lng, lat):
 
 #97轉84
 def get_wgs84(x, y):
+    print("to_wgs84")
     url = "http://gis.thl.ncku.edu.tw/coordtrans/coordtrans.aspx"
     headers = {
         "Upgrade-Insecure-Requests":"1",

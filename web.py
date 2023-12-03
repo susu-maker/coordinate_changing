@@ -3,6 +3,7 @@ from flask import Flask, request, render_template, jsonify,request,make_response
 from flask_socketio import SocketIO
 from flask_cors import CORS
 import change_coordinate as cc
+import re
 # 創建Flask應用
 app = Flask(__name__)
 
@@ -27,7 +28,8 @@ def index():
 def change_coordinate():
     if request.method == 'POST':
         print("success")
-        coor = request.values.get('CoordValue').split(",")
+        # coor = request.values.get('CoordValue').split(",")
+        coor = re.split(r'[;,\s]\s*', request.values.get('CoordValue'))
         coor = [float(i) for i in coor]
         print(coor)
         if(coor[0]>10000):
